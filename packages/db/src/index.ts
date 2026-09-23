@@ -1,8 +1,14 @@
-export type { Database, Json } from './database.types'
+// database.types.ts is generated — regenerate with `pnpm db:types` from the repo root.
+export type {
+  CompositeTypes,
+  Database,
+  Enums,
+  Json,
+  Tables,
+  TablesInsert,
+  TablesUpdate,
+} from './database.types'
 
-import type { Database } from './database.types'
-
-export type Tables<T extends keyof Database['public']['Tables']> =
-  Database['public']['Tables'][T]['Row']
+import type { Tables } from './database.types'
 
 export type Profile = Tables<'profiles'>

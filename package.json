@@ -7,7 +7,7 @@
     "build": "turbo run build",
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
-    "db:types": "supabase gen types typescript --linked > packages/db/src/database.types.ts"
+    "db:types": "supabase gen types typescript --project-id gqirrashvidfmkkcziqw > packages/db/src/database.types.ts"
   },
   "devDependencies": {
     "turbo": "^2.11.3"

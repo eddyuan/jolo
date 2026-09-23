@@ -26,12 +26,13 @@ Both apps talk to the same Supabase project (Postgres, Auth, Storage).
    cp apps/mobile/.env.example apps/mobile/.env
    ```
 
-2. **Supabase project** — create one at [supabase.com](https://supabase.com), then put the
-   project URL and publishable (or anon) key from *Project Settings → API* into both env files.
+2. **Supabase project** — the project is `jolo` (ref `gqirrashvidfmkkcziqw`, region
+   `ca-central-1`). Put its URL (`https://gqirrashvidfmkkcziqw.supabase.co`) and publishable key
+   (*Project Settings → API Keys*) into both env files.
 
-3. **Database** — apply the migrations in `supabase/migrations/`, either with the
-   [Supabase CLI](https://supabase.com/docs/guides/cli) (`supabase link` then `supabase db push`)
-   or by pasting them into the SQL editor.
+3. **Database** — migrations in `supabase/migrations/` are already applied to the project. For
+   new ones, use the [Supabase CLI](https://supabase.com/docs/guides/cli)
+   (`supabase link --project-ref gqirrashvidfmkkcziqw` then `supabase db push`).
 
 4. **Google sign-in** (one Google OAuth client serves web and mobile, since both go through
    Supabase's hosted OAuth flow)

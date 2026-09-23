@@ -116,7 +116,7 @@ Next.js 16 (Vercel) ── web UI + route handlers (API)      Expo / React Nativ
 - Success metric: **response rate per application**, not volume.
 
 ## 7. Suggested build order
-1. ~~Monorepo skeleton (Next.js web + Expo mobile + Supabase), Google sign-in, RLS.~~ Built; needs a Supabase project and Google OAuth client (see README).
+1. ~~Monorepo skeleton (Next.js web + Expo mobile + Supabase), Google sign-in, RLS.~~ Built; Supabase project `jolo` (ca-central-1) created with migrations applied. Google OAuth client still to configure (see README).
 2. Resume upload/parse → master profile → preferences.
 3. Tailored resume generation with diff + PDF/DOCX export.
 4. Job ingestion from Greenhouse/Lever/Ashby boards + matching + daily review queue.
