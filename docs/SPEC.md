@@ -17,7 +17,7 @@ submits them, and tracks what happens next.
 | 7 | Resume guardrail | Never fabricate. Rephrase/reorder/emphasize only; every claim traces to the master profile. Show a diff before use. |
 | 8 | Market | Canada first. |
 | 9 | Business model | Free tier (a few applications/month) + subscription with quotas, priced from measured per-application cost. |
-| 10 | Platforms | Responsive Nuxt 4 web app first. Flutter mobile app in v2 (notifications, on-the-go approvals). |
+| 10 | Platforms | Next.js web app and Expo (React Native) mobile app in one pnpm + Turborepo monorepo, sharing Supabase types. Web leads on features; mobile covers notifications and on-the-go approvals. |
 | 11 | Workers | Hosted browser service (e.g. Browserbase) driven by a small worker. Self-hosted Playwright later if cost demands. |
 | 12 | Data & auth | Supabase (Postgres + auth + storage + row-level security). |
 | 13 | First users | Software engineers in Canada. |
@@ -71,14 +71,15 @@ submits them, and tracks what happens next.
 - **Full Gmail read** (restricted scope + annual CASA assessment).
 - **Interview prep**: company research, likely questions, mock interviews (reuses voice).
 - **Video intro** on a shareable profile page, with liveness check and biometric consent.
-- **Flutter mobile app**.
+- **Full mobile feature parity** (v1 mobile: sign-in, review queue approvals, notifications).
 - More ATS adapters (Workday, SmartRecruiters, …), more countries, rules-based auto-apply.
 
 ## 4. Architecture
 
 ```
-Nuxt 4 (Vercel) ── web UI + Nitro server routes (API)
-      │
+Next.js 16 (Vercel) ── web UI + route handlers (API)      Expo / React Native app
+      │                                                          │
+      ├──────────────────────────────────────────────────────────┘
       ├── Supabase: Postgres (RLS), Auth, Storage (resumes, screenshots, media)
       ├── Job queue (Postgres-backed, e.g. pg-boss, or a hosted queue)
       │        │
@@ -115,7 +116,7 @@ Nuxt 4 (Vercel) ── web UI + Nitro server routes (API)
 - Success metric: **response rate per application**, not volume.
 
 ## 7. Suggested build order
-1. ~~Nuxt + Supabase skeleton, Google sign-in, RLS.~~ Built; needs a Supabase project and Google OAuth client (see README).
+1. ~~Monorepo skeleton (Next.js web + Expo mobile + Supabase), Google sign-in, RLS.~~ Built; needs a Supabase project and Google OAuth client (see README).
 2. Resume upload/parse → master profile → preferences.
 3. Tailored resume generation with diff + PDF/DOCX export.
 4. Job ingestion from Greenhouse/Lever/Ashby boards + matching + daily review queue.
