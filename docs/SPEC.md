@@ -17,7 +17,7 @@ submits them, and tracks what happens next.
 | 7 | Resume guardrail | Never fabricate. Rephrase/reorder/emphasize only; every claim traces to the master profile. Show a diff before use. |
 | 8 | Market | Canada first. |
 | 9 | Business model | Free tier (a few applications/month) + subscription with quotas, priced from measured per-application cost. |
-| 10 | Platforms | Responsive Nuxt web app first. Flutter mobile app in v2 (notifications, on-the-go approvals). |
+| 10 | Platforms | Responsive Nuxt 4 web app first. Flutter mobile app in v2 (notifications, on-the-go approvals). |
 | 11 | Workers | Hosted browser service (e.g. Browserbase) driven by a small worker. Self-hosted Playwright later if cost demands. |
 | 12 | Data & auth | Supabase (Postgres + auth + storage + row-level security). |
 | 13 | First users | Software engineers in Canada. |
@@ -77,7 +77,7 @@ submits them, and tracks what happens next.
 ## 4. Architecture
 
 ```
-Nuxt 3 (Vercel) ── web UI + Nitro server routes (API)
+Nuxt 4 (Vercel) ── web UI + Nitro server routes (API)
       │
       ├── Supabase: Postgres (RLS), Auth, Storage (resumes, screenshots, media)
       ├── Job queue (Postgres-backed, e.g. pg-boss, or a hosted queue)
@@ -115,7 +115,7 @@ Nuxt 3 (Vercel) ── web UI + Nitro server routes (API)
 - Success metric: **response rate per application**, not volume.
 
 ## 7. Suggested build order
-1. Nuxt + Supabase skeleton, Google sign-in, RLS.
+1. ~~Nuxt + Supabase skeleton, Google sign-in, RLS.~~ Built; needs a Supabase project and Google OAuth client (see README).
 2. Resume upload/parse → master profile → preferences.
 3. Tailored resume generation with diff + PDF/DOCX export.
 4. Job ingestion from Greenhouse/Lever/Ashby boards + matching + daily review queue.
